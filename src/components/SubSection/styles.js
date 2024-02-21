@@ -32,7 +32,7 @@ export const Input = styled.input`
 export const SubSectionCreate = styled.div``;
 
 export const InputAdd = styled.input`
-  font-size: 18px;
+  font-size: 14px;
   padding: 6px 10px;
   font-weight: 500;
   border: 1px solid rgba(0, 0, 0, 0.5);
@@ -47,7 +47,7 @@ export const InputAdd = styled.input`
 `;
 
 export const Button = styled.button`
-  font-size: 18px;
+  font-size: 14px;
   padding: 6px 10px;
   font-weight: 400;
   border: 1px solid rgba(0, 0, 0, 0.5);

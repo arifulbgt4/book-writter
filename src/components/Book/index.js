@@ -4,11 +4,17 @@ import { BookWrapper } from "./styles";
 import Users from "../Users";
 
 const Book = () => {
-  const [readOnly, setReadOnly] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [readOnly, setReadOnly] = useState(
+    user?.role === "user" || !(user?.role === "collaborator")
+  );
+  const [isAdmin, setIsAdmin] = useState(user?.role === "admin");
+
+  console.log("read", readOnly);
+
   return (
     <BookWrapper>
-      <Users />
+      <Users user={user} />
       <Section readOnly={readOnly} isAdmin={isAdmin} />
     </BookWrapper>
   );

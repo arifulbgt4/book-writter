@@ -46,7 +46,7 @@ const SubSection = ({
         readOnly={readOnly}
       />
       {renderSubSection()}
-      {isAdmin && (
+      {!readOnly && isAdmin && (
         <SubSectionCreate>
           <InputAdd
             value={value}

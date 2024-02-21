@@ -83,13 +83,15 @@ const Section = ({ readOnly, isAdmin }) => {
             />
           </SectionWrapper>
         ))}
-      <div>
-        <SectionInput
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-        />
-        <AddButton onClick={createSection}>Add section</AddButton>
-      </div>
+      {isAdmin && (
+        <div>
+          <SectionInput
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <AddButton onClick={createSection}>Add section</AddButton>
+        </div>
+      )}
     </Wrapper>
   );
 };

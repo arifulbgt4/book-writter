@@ -1,3 +1,27 @@
 {
-  "users": []
+  "users": [],
+  "sections": [
+    {
+      "id": "1",
+      "title": "Introduction",
+      "subsection": [
+        {
+          "id": "1",
+          "title": "Intro to Platform",
+          "subsection": [
+            {
+              "id": "1",
+              "title": "Intro to Platform (Menu Bar).",
+              "subsection": []
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "title": "Intro to Book Writing.",
+          "subsection": []
+        }
+      ]
+    }
+  ]
 }

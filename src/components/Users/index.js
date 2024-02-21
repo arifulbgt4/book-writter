@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import {
   Button,
   CollaboratorAdd,
@@ -12,6 +13,7 @@ import {
 const Users = ({ user, isAdmin }) => {
   const [data, setData] = useState([]);
   const [value, setvalue] = useState("");
+
   const logOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");

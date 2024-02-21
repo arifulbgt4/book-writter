@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { Button, Form, Input, P } from "./styles";
 
 const SignUp = ({ onClick }) => {
@@ -8,6 +9,7 @@ const SignUp = ({ onClick }) => {
     password: "",
     role: "user",
   });
+
   const handleSubmit = async (e) => {
     e?.preventDefault();
     try {

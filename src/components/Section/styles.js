@@ -10,8 +10,21 @@ export const SectionWrapper = styled.div`
   padding: 10px;
   margin: 0 0 20px;
   border-radius: 3px;
+  position: relative;
+  &:after {
+    content: "✍";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 20px;
+  }
   &:hover {
     border: 1px solid rgba(0, 0, 0, 0.3);
+    &:after {
+      opacity: 1;
+    }
   }
 `;
 

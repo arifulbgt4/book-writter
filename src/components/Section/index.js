@@ -16,7 +16,6 @@ const Section = ({ readOnly, isAdmin }) => {
 
       const resData = await res.json();
       setData(resData);
-      console.log("res", resData);
     } catch (error) {
       console.error(error);
     }

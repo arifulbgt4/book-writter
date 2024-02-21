@@ -1,5 +1,14 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "admin@admin.com",
+      "password": "$2a$10$6o5IPddcU6DSKZQ1BzCZCOl3/Io8xpKraJjdEWpkFeln9gDqlxC1G",
+      "name": "Ariful islam",
+      "role": "admin",
+      "id": 1
+    }
+  ],
+  "collaborator": [],
   "sections": [
     {
       "id": "1",

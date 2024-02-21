@@ -10,11 +10,9 @@ const Book = () => {
   );
   const [isAdmin, setIsAdmin] = useState(user?.role === "admin");
 
-  console.log("read", readOnly);
-
   return (
     <BookWrapper>
-      <Users user={user} />
+      <Users user={user} isAdmin={isAdmin} />
       <Section readOnly={readOnly} isAdmin={isAdmin} />
     </BookWrapper>
   );

@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import { Button, Form, Input, P } from "./styles";
 
-const SignUp = ({ onClick }) => {
+const SignIn = ({ onClick }) => {
   const [values, setValues] = useState({
-    name: "",
     email: "",
     password: "",
-    role: "user",
   });
   const handleSubmit = async (e) => {
     e?.preventDefault();
     try {
-      const res = await fetch("http://localhost:3001/register/", {
+      const res = await fetch("http://localhost:3001/signin/", {
         method: "POST",
         mode: "cors",
         credentials: "same-origin",
@@ -35,8 +33,7 @@ const SignUp = ({ onClick }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2>Sign up</h2>
-      <Input name="name" value={values?.name} onChange={handleChange} />
+      <h2>Sign in</h2>
       <Input
         type="email"
         name="email"
@@ -49,10 +46,11 @@ const SignUp = ({ onClick }) => {
         value={values?.password}
         onChange={handleChange}
       />
-      <P onClick={onClick}>You have an account then login</P>
-      <Button type="submit">Sign up</Button>
+      <P onClick={onClick}>You have no account then signup</P>
+
+      <Button type="submit">Sign in</Button>
     </Form>
   );
 };
 
-export default SignUp;
+export default SignIn;

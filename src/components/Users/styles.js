@@ -18,7 +18,8 @@ export const P = styled.p`
 
 export const CollaboratorAdd = styled.div`
   display: flex;
-  margin: 0 0 20px;
+  flex-direction: column;
+  margin: 20px 0;
 `;
 
 export const UL = styled.ul`
@@ -30,6 +31,7 @@ export const UL = styled.ul`
 export const Input = styled.input`
   font-size: 14px;
   padding: 0 10px;
+  height: 30px;
   font-weight: 400;
   border: 1px solid rgba(0, 0, 0, 0.5);
   outline: none;

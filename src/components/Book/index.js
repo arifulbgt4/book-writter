@@ -13,7 +13,7 @@ const Book = () => {
   return (
     <BookWrapper>
       <Users user={user} isAdmin={isAdmin} />
-      <Section readOnly={readOnly} isAdmin={isAdmin} />
+      <Section readOnly={isAdmin ? false : readOnly} isAdmin={isAdmin} />
     </BookWrapper>
   );
 };

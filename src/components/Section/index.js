@@ -35,6 +35,13 @@ const Section = ({ readOnly, isAdmin }) => {
   const handleSections = (selector, newTitle, create = false) => {
     const updateSections = [...data];
     let currentSection = updateSections?.find((sec) => sec?.id === selector[0]);
+
+    if (selector?.length === 1 && currentSection) {
+      currentSection.title = newTitle;
+      setData(updateSections);
+      return;
+    }
+
     for (let i = 1; i < selector?.length - 1; i++) {
       currentSection = currentSection?.subsection?.find(
         (sub) => sub?.id === selector[i]

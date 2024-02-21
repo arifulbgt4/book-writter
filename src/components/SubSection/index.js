@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import {
   Button,
   Input,
@@ -7,7 +7,17 @@ import {
   SubSectionWrapper,
 } from "./styles";
 
-const SubSection = ({ title, readOnly, subsection, isAdmin }) => {
+const SubSection = ({
+  title,
+  readOnly,
+  subsection,
+  isAdmin,
+  elements,
+  onClick,
+  onChange,
+}) => {
+  const [value, setValue] = useState("");
+
   const renderSubSection = () => {
     if (!!subsection?.length) {
       return subsection?.map((child, i) => (
@@ -15,7 +25,10 @@ const SubSection = ({ title, readOnly, subsection, isAdmin }) => {
           key={i}
           title={child?.title}
           readOnly={readOnly}
+          elements={`${elements},${child?.id}`}
           isAdmin={isAdmin}
+          onChange={onChange}
+          onClick={onClick}
           subsection={child?.subsection}
         />
       ));
@@ -23,14 +36,30 @@ const SubSection = ({ title, readOnly, subsection, isAdmin }) => {
     return null;
   };
 
+  const element = useMemo(() => elements?.split(","), [elements]);
+
   return (
     <SubSectionWrapper>
-      <Input defaultValue={title} readOnly={readOnly} />
+      <Input
+        value={title}
+        onChange={(e) => onChange(element, e.target.value)}
+        readOnly={readOnly}
+      />
       {renderSubSection()}
       {isAdmin && (
         <SubSectionCreate>
-          <InputAdd />
-          <Button>Add</Button>
+          <InputAdd
+            value={value}
+            onChange={(e) => setValue(e?.target?.value)}
+          />
+          <Button
+            onClick={() => {
+              onClick(element, value);
+              setValue("");
+            }}
+          >
+            Add
+          </Button>
         </SubSectionCreate>
       )}
     </SubSectionWrapper>

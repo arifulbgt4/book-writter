@@ -33,6 +33,25 @@ const Section = ({ readOnly, isAdmin }) => {
     setValue("");
   };
 
+  const handleSections = (selector, newTitle) => {
+    const updateSections = [...data];
+    let currentSection = updateSections?.find((sec) => sec?.id === selector[0]);
+    for (let i = 1; i < selector?.length - 1; i++) {
+      currentSection = currentSection?.subsection?.find(
+        (sub) => sub?.id === selector[i]
+      );
+    }
+    const lastId = selector[selector?.length - 1];
+    const updateSection = currentSection?.subsection.find(
+      (sec) => sec?.id === lastId
+    );
+
+    if (updateSection) {
+      updateSection.title = newTitle;
+      setData(updateSections);
+    }
+  };
+
   useEffect(() => {
     getSections();
   }, []);
@@ -45,8 +64,16 @@ const Section = ({ readOnly, isAdmin }) => {
             <SubSection
               title={el?.title}
               readOnly={readOnly}
+              elements={el?.id}
               isAdmin={isAdmin}
               subsection={el.subsection}
+              onChange={(el, v) => {
+                console.log("elements: ", el, v);
+                handleSections(el, v);
+              }}
+              onClick={(el, v) => {
+                console.log("elements: ", el, v);
+              }}
             />
           </SectionWrapper>
         ))}

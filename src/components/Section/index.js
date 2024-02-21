@@ -33,7 +33,7 @@ const Section = ({ readOnly, isAdmin }) => {
     setValue("");
   };
 
-  const handleSections = (selector, newTitle) => {
+  const handleSections = (selector, newTitle, create = false) => {
     const updateSections = [...data];
     let currentSection = updateSections?.find((sec) => sec?.id === selector[0]);
     for (let i = 1; i < selector?.length - 1; i++) {
@@ -41,6 +41,17 @@ const Section = ({ readOnly, isAdmin }) => {
         (sub) => sub?.id === selector[i]
       );
     }
+
+    if (create) {
+      currentSection?.subsection?.push({
+        id: uuidv4(),
+        title: newTitle,
+        subsection: [],
+      });
+      setData(updateSections);
+      return;
+    }
+
     const lastId = selector[selector?.length - 1];
     const updateSection = currentSection?.subsection.find(
       (sec) => sec?.id === lastId
@@ -67,13 +78,8 @@ const Section = ({ readOnly, isAdmin }) => {
               elements={el?.id}
               isAdmin={isAdmin}
               subsection={el.subsection}
-              onChange={(el, v) => {
-                console.log("elements: ", el, v);
-                handleSections(el, v);
-              }}
-              onClick={(el, v) => {
-                console.log("elements: ", el, v);
-              }}
+              onChange={(el, v) => handleSections(el, v)}
+              onClick={(el, v) => handleSections(el, v, true)}
             />
           </SectionWrapper>
         ))}

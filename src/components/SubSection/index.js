@@ -54,7 +54,7 @@ const SubSection = ({
           />
           <Button
             onClick={() => {
-              onClick(element, value);
+              onClick([...element, 1], value);
               setValue("");
             }}
           >
